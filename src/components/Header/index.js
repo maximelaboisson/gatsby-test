@@ -26,6 +26,15 @@ const Header = () => (
           Gatsby
         </Link>
       </h1>
+    <div data-netlify-identity-menu></div>
+    <div 
+      data-netlify-identity-button           
+      style={{
+            color: 'white',
+            textDecoration: 'none',
+      }}>
+        Login with Netlify Identity
+      </div>
     </div>
   </div>
 )

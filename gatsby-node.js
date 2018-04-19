@@ -2,33 +2,39 @@ const slash = require('slash')
 const path = require('path')
 
 exports.createPages = async ({graphql, boundActionCreators}) => {
-    let result = await graphql(`
-        {
-            allSnipcartProduct {
-                edges {
-                    node {
-                        path,
-                        userDefinedId,
-                        name
-                    }
-                }
-            }
-        }
-    `)
-
     const { createPage } = boundActionCreators
     const productTemplate = path.resolve('src/components/product.js')
 
-    result.data.allSnipcartProduct
-        .edges
-        .map(x => x.node)
-        .forEach(node => {
-            createPage({
-                path: node.path,
-                component: slash(productTemplate),
-                context: {
-                    id: node.userDefinedId
-                }
-            })
-        })
+    return graphql(`
+    {
+      allMarkdownRemark {
+        edges {
+          node {
+            frontmatter {
+                sku,
+                loc,
+                price,
+                desc,
+                private,
+                name
+            }
+          }
+        }
+      }
+    }
+  `).then(result => {
+    if (result.errors) {
+      return Promise.reject(result.errors);
+    }
+
+    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+      createPage({
+        path: node.frontmatter.loc,
+        component: slash(productTemplate),
+        context: {
+            id: node.sku
+        }
+      });
+    });
+  });
 }

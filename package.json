@@ -4,9 +4,11 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "gatsby": "^1.9.158",
+    "gatsby": "^1.9.253",
     "gatsby-link": "^1.6.34",
     "gatsby-plugin-react-helmet": "^2.0.3",
+    "gatsby-source-filesystem": "^1.5.33",
+    "gatsby-transformer-remark": "^1.7.40",
     "react-helmet": "^5.2.0"
   },
   "keywords": [
@@ -16,7 +18,7 @@
   "main": "n/a",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
