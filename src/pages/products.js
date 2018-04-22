@@ -3,10 +3,14 @@ import Link from 'gatsby-link'
 import styles from './products.module.css'
 
 export default ({data}) => {
-    var products = netlifyIdentity.currentUser() == null
+    debugger
+    var products = window.netlifyIdentity 
+    && window.netlifyIdentity.currentUser() != null
         ? data.allMarkdownRemark.edges
-            .filter(x => !x.node.frontmatter.private)
         : data.allMarkdownRemark.edges
+            .filter(x => !x.node.frontmatter.private)
+
+    console.log(products);
 
     return (
         <div>
