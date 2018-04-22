@@ -3,7 +3,10 @@ import Link from 'gatsby-link'
 import styles from './product.module.css'
 const NETLIFY_URL = 'https://gatsby-netlify-snipcart.netlify.com'
 
-export default ({data, location}) =>(
+export default ({data, location}) => {
+    var formId = `product-${data.markdownRemark.frontmatter.sku}`
+
+    return (
     <div>
         <h1>{data.markdownRemark.frontmatter.name}</h1>
         
@@ -30,8 +33,27 @@ export default ({data, location}) =>(
                 </button>
             </div>
         </section>
+        
+        <h3 class="reviews">Reviews</h3>
+
+        <form name={formId} method="POST" netlify>
+            <p>
+                <label>Name: <textarea name="name"></textarea></label>
+            </p>            
+            <p>
+                <label>Email: <textarea name="email"></textarea></label>
+            </p>
+
+            <p>
+                <label>Review message: <textarea name="message"></textarea></label>
+            </p>
+            <p>
+                <button type="submit">Send</button>
+            </p>
+        </form>
     </div>
 )
+}
 
 export const query = graphql`
 query productById($id: Int) {
