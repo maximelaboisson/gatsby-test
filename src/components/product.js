@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import styles from './product.module.css'
-const NETLIFY_URL = 'https://snipcart-gatsby-grav.netlify.com'
+const NETLIFY_URL = 'https://gatsby-netlify-snipcart.netlify.com'
 
 export default ({data, location}) =>(
     <div>
