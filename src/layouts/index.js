@@ -15,9 +15,12 @@ const TemplateWrapper = ({ children }) => (
       ]}>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
       <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js" id="snipcart" data-api-key="YjdiNWIyOTUtZTIyMy00MWMwLTkwNDUtMzI1M2M2NTgxYjE0"></script>
+      <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
       <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" type="text/css" rel="stylesheet" />
     </Helmet>
     <Header />
+    <div data-netlify-identity-menu></div>
+        <div data-netlify-identity-button>Login with Netlify Identity</div>
     <div
       style={{
         margin: '0 auto',
