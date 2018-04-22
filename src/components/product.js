@@ -36,12 +36,12 @@ export default ({data, location}) => {
         
         <h3 class="reviews">Reviews</h3>
 
-        <form name={formId} method="POST" netlify>
+        <form name={formId} method="POST" data-netlify="true">
             <p>
-                <label>Name: <textarea name="name"></textarea></label>
+                <label>Name: <input type="text" name="name"></input></label>
             </p>            
             <p>
-                <label>Email: <textarea name="email"></textarea></label>
+                <label>Email: <input type="email" name="email"></input></label>
             </p>
 
             <p>
