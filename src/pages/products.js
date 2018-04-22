@@ -2,22 +2,32 @@ import React from 'react'
 import Link from 'gatsby-link'
 import styles from './products.module.css'
 
-export default ({data}) => {
-    debugger
-    var products = window.netlifyIdentity 
-    && window.netlifyIdentity.currentUser() != null
-        ? data.allMarkdownRemark.edges
-        : data.allMarkdownRemark.edges
-            .filter(x => !x.node.frontmatter.private)
+export default class Products extends React.Component {
+    constructor(data){
+        super(data);
 
-    console.log(products);
+        this.state = {
+          products: []
+        }
+      }
 
-    return (
+    componentDidMount(){
+        var products =  window.netlifyIdentity 
+        && window.netlifyIdentity.currentUser() != null
+            ? this.props.data.allMarkdownRemark.edges
+            : this.props.data.allMarkdownRemark.edges
+                .filter(x => !x.node.frontmatter.private)    
+
+        this.setState({ products: products });
+    }
+
+    render(){
+        return (
         <div>
             <h1>Products</h1>
 
             <ul className={styles.itemsList}>
-                {products.map((o, index) =>
+                {this.state.products.map((o, index) =>
                     <li key={index} className={styles.item}>
                         <Link to={o.node.frontmatter.loc}>
                             <figure>
@@ -29,6 +39,7 @@ export default ({data}) => {
                 )}
             </ul>
         </div>)
+    }
 }
 
 export const query = graphql`
