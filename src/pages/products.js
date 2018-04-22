@@ -3,12 +3,17 @@ import Link from 'gatsby-link'
 import styles from './products.module.css'
 
 export default ({data}) => {
+    var products = netlifyIdentity.currentUser() == null
+        ? data.allMarkdownRemark.edges
+            .filter(x => !x.node.frontmatter.private)
+        : data.allMarkdownRemark.edges
+
     return (
         <div>
             <h1>Products</h1>
 
             <ul className={styles.itemsList}>
-                {data.allMarkdownRemark.edges.map((o, index) =>
+                {products.map((o, index) =>
                     <li key={index} className={styles.item}>
                         <Link to={o.node.frontmatter.loc}>
                             <figure>
