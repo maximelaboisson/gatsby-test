@@ -19,8 +19,6 @@ const TemplateWrapper = ({ children }) => (
       <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" type="text/css" rel="stylesheet" />
     </Helmet>
     <Header />
-    <div data-netlify-identity-menu></div>
-        <div data-netlify-identity-button>Login with Netlify Identity</div>
     <div
       style={{
         margin: '0 auto',

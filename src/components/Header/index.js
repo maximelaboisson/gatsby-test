@@ -26,6 +26,7 @@ const Header = () => (
           Gatsby
         </Link>
       </h1>
+      <div data-netlify-identity-menu></div>
     </div>
   </div>
 )
