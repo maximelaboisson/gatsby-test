@@ -36,7 +36,8 @@ export default ({data, location}) => {
         
         <h3 class="reviews">Reviews</h3>
 
-        <form name={formId} method="POST" data-netlify="true">
+        <form name={formId} method="POST" data-netlify-honeypot="bot-field" data-netlify="true">
+            <input type="hidden" name="form-name" value={formId} />
             <p>
                 <label>Name: <input type="text" name="name"></input></label>
             </p>            
