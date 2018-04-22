@@ -12,10 +12,23 @@ export default ({data, location}) =>(
         </div>
 
         <section>
+            <figure className={styles.productFigure}>
+                <img src={data.markdownRemark.frontmatter.image} />
+            </figure>
+
             <article>
-                {data.markdownRemark.frontmatter.desc}
-                <p>{data.markdownRemark.frontmatter.price}</p>
+                {data.markdownRemark.frontmatter.description}
             </article>
+            <div className={styles.actions}>
+                <button type="button" className={`${styles.buyButton} snipcart-add-item`}
+                    data-item-name={data.markdownRemark.frontmatter.name}
+                    data-item-id={data.markdownRemark.frontmatter.sku}
+                    data-item-image={data.markdownRemark.frontmatter.image}
+                    data-item-url={`${NETLIFY_URL}${location.pathname}`}
+                    data-item-price={data.markdownRemark.frontmatter.price}>
+                    Buy it now for {data.markdownRemark.frontmatter.price}$
+                </button>
+            </div>
         </section>
     </div>
 )
