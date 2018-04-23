@@ -13,9 +13,6 @@ exports.handler = function(event, context, callback) {
             hostname: 'www.hooks.slack.com',
             port: '443',
             path: '/services/T0253KADL/BAB9445T5/IWjaMiSOjHIdf8tvq2D9oGPe',
-            data: {
-                "message": `hi from lambda`
-            },
             method: 'POST',
             headers: {
                 "content-type": "application/json",
@@ -29,22 +26,8 @@ exports.handler = function(event, context, callback) {
                 console.log('Body: ' + body);
             });
         });
-    
-        req.write(`{"string": "${message}"}`);
+        
+        req.write(`{"text": "${message}"}`);
         req.end();    
-
-        callback(null, {
-            statusCode: 200,
-            headers: {
-                "Access-Control-Allow-Origin" : "*"
-            }
-        });
     }
-
-    callback(null, {
-        statusCode: 200,
-        headers: {
-            "Access-Control-Allow-Origin" : "*"
-        }
-    });
 }
