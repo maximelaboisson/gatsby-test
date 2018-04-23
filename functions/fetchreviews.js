@@ -1,3 +1,5 @@
+const fetch = require('node-fetch')
+
 exports.handler = function(event, context, callback) {
     var id = event.queryStringParameters.id;
     var token = 'eb34003b40f217432461bc6a272d8b5582ccdf15c14597f12754f3029a55dfbb'
@@ -22,6 +24,4 @@ exports.handler = function(event, context, callback) {
                     body: x
                 }))
         })
-        
-
 }
