@@ -1,4 +1,4 @@
-var fetch = require('node-fetch');
+const https = require("https");
 
 exports.handler = function(event, context, callback) {
     var id = event.queryStringParameters.id;
@@ -8,7 +8,26 @@ exports.handler = function(event, context, callback) {
         callback('A product id must be specified.')
     }
 
-    fetch(`https://api.netlify.com/api/v1/forms?access_token=${token}`)
+    https.get(`https://api.netlify.com/api/v1/forms?access_token=${token}`, res => {
+        res.setEncoding("utf8");
+        
+        let body = "";
+        
+        res.on("data", data => {
+          body += data;
+        });
+        
+        res.on("end", () => {
+          body = JSON.parse(body);
+          
+          callback(null, {
+            statusCode: 200,
+            body: body
+          });
+        });
+      });
+
+    /*fetch(`https://api.netlify.com/api/v1/forms?access_token=${token}`)
         .then(x => x.json())
         .then(x => {
             var form = x.filter(y => y.id == id)[0]
@@ -23,5 +42,5 @@ exports.handler = function(event, context, callback) {
                     statusCode: 200,
                     body: x
                 }))
-        })
+        })*/
 }
