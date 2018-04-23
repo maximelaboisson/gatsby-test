@@ -14,6 +14,7 @@ exports.handler = function(event, context, callback) {
 
         var options = {
             hostname: 'www.hooks.slack.com',
+            port: 443,
             path: '/services/T0253KADL/BAB9445T5/IWjaMiSOjHIdf8tvq2D9oGPe',
             method: 'POST',
             headers: {        
