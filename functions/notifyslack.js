@@ -6,13 +6,12 @@ exports.handler = function(event, context, callback) {
     var webhook = 'https://hooks.slack.com/services/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';
     
     var body = JSON.parse(event.body);
-    var data = body.message;
 
-    if(data != null){
+    if(body != null && body.data != null){
 
-        console.log(data);
-        console.log(body);    
+        console.log(`DATA IS: ${body.data}`)
 
+        var data = body.data;
         var message = `${data.name}(${data.email}): ${data.message}`;
 
         var options = {
