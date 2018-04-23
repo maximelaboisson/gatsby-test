@@ -24,6 +24,9 @@ exports.handler = function(event, context, callback) {
         };
     
         var req = http.request(options, function(res) {
+            console.log('STATUS:', res.statusCode);
+            console.log('HEADERS:', JSON.stringify(res.headers));
+            
             res.setEncoding('utf8');
             
             res.on('data', function (body) {
@@ -35,6 +38,10 @@ exports.handler = function(event, context, callback) {
                     statusCode: 200
                 })
             });
+        });
+        
+        req.on('error', function (e) {
+            console.log('Problem with request:', e.message);
         });
 
         req.write(postData);
