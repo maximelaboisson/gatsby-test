@@ -15,9 +15,7 @@ exports.handler = function(event, context, callback) {
         var message = `${data.name}(${data.email}): ${data.message}`;
 
         var options = {
-            hostname: 'https://hooks.slack.com',
-            port: 443,
-            path: '/services/T0253KADL/BAB9445T5/IWjaMiSOjHIdf8tvq2D9oGPe',
+            hostname: 'https://hooks.slack.com/services/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',
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
