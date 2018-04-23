@@ -7,7 +7,9 @@ exports.handler = function(event, context, callback) {
     
     console.log(event.body);
 
-    var message = `${event.body.data.name}(${event.body.data.email}): ${event.body.data.message}`;
+    var data = JSON.parse(event.body.data);
+
+    var message = `${data.name}(${data.email}): ${data.message}`;
 
     var options = {
         hostname: 'https://hooks.slack.com',
