@@ -3,8 +3,6 @@
 var http = require("http");
 
 exports.handler = function(event, context, callback) {
-    var webhook = 'https://hooks.slack.com/services/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';
-    
     var body = JSON.parse(event.body);
 
     if(body != null && body.data != null){
@@ -15,7 +13,9 @@ exports.handler = function(event, context, callback) {
         var message = `${data.name}(${data.email}): ${data.message}`;
 
         var options = {
-            hostname: 'https://hooks.slack.com/services/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',
+            hostname: 'hooks.slack.com',
+            port: '443',
+            path: '/services/T0253KADL/BAB9445T5/IWjaMiSOjHIdf8tvq2D9oGPe',
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
