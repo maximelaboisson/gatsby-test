@@ -5,6 +5,8 @@ var http = require("http");
 exports.handler = function(event, context, callback) {
     var webhook = 'https://hooks.slack.com/services/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';
     
+    console.log(event.body);
+
     var message = `${event.body.data.name}(${event.body.data.email}): ${event.body.data.message}`;
 
     var options = {
@@ -16,17 +18,17 @@ exports.handler = function(event, context, callback) {
             'content-type': 'application/json',
             "Access-Control-Allow-Origin" : "*"
         }
-      };
+    };
 
-      var req = http.request(options, function(res) {
+    var req = http.request(options, function(res) {
         res.setEncoding('utf8');
         res.on('data', function (body) {
-          console.log('Body: ' + body);
+            console.log('Body: ' + body);
         });
-      });
+    });
 
-      req.write(`{"string": "${message}"}`);
-      req.end();
+    req.write(`{"string": "${message}"}`);
+    req.end();
 
     /*fetch(webhook, {
         body: JSON.stringify(message),
