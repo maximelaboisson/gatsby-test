@@ -8,43 +8,46 @@ exports.handler = function(event, context, callback) {
     var body = JSON.parse(event.body);
     var data = body.message;
 
-    console.log(data);
-    console.log(body);
+    if(data != null){
 
-    var message = `${data.name}(${data.email}): ${data.message}`;
+        console.log(data);
+        console.log(body);    
 
-    var options = {
-        hostname: 'https://hooks.slack.com',
-        port: 443,
-        path: '/services/T0253KADL/BAB9445T5/IWjaMiSOjHIdf8tvq2D9oGPe',
-        method: 'POST',
+        var message = `${data.name}(${data.email}): ${data.message}`;
+
+        var options = {
+            hostname: 'https://hooks.slack.com',
+            port: 443,
+            path: '/services/T0253KADL/BAB9445T5/IWjaMiSOjHIdf8tvq2D9oGPe',
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                "Access-Control-Allow-Origin" : "*"
+            }
+        };
+    
+        var req = http.request(options, function(res) {
+            res.setEncoding('utf8');
+            res.on('data', function (body) {
+                console.log('Body: ' + body);
+            });
+        });
+    
+        req.write(`{"string": "${message}"}`);
+        req.end();    
+
+        callback(null, {
+            statusCode: 200,
+            headers: {
+                "Access-Control-Allow-Origin" : "*"
+            }
+        });
+    }
+
+    callback(null, {
+        statusCode: 200,
         headers: {
-            'content-type': 'application/json',
             "Access-Control-Allow-Origin" : "*"
         }
-    };
-
-    var req = http.request(options, function(res) {
-        res.setEncoding('utf8');
-        res.on('data', function (body) {
-            console.log('Body: ' + body);
-        });
     });
-
-    req.write(`{"string": "${message}"}`);
-    req.end();
-
-    /*fetch(webhook, {
-        body: JSON.stringify(message),
-        cache: 'no-cache',
-        headers: {
-          'content-type': 'application/json',
-          "Access-Control-Allow-Origin" : "*"
-        },
-        method: 'POST',
-        redirect: 'follow',
-        referrer: 'no-referrer',
-      })
-      .then(response => response.json())
-      .then(x => console.log(x));*/
 }
