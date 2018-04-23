@@ -1,4 +1,4 @@
-const fetch = require('node-fetch').default
+import fetch from 'node-fetch';
 
 exports.handler = function(event, context, callback) {
     var id = event.queryStringParameters.id;
