@@ -5,9 +5,11 @@ var http = require("http");
 exports.handler = function(event, context, callback) {
     var webhook = 'https://hooks.slack.com/services/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';
     
-    console.log(event.body);
+    var body = JSON.parse(event.body);
+    var data = bodt.message;
 
-    var data = JSON.parse(event.body.data);
+    console.log(data);
+    console.log(body);
 
     var message = `${data.name}(${data.email}): ${data.message}`;
 
