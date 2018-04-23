@@ -18,8 +18,7 @@ exports.handler = function(event, context, callback) {
             method: 'POST',
             headers: {        
                 'Content-Type': 'application/x-www-form-urlencoded',
-                'Content-Length': postData.length,
-                "Access-Control-Allow-Origin" : "*"
+                'Content-Length': postData.length
             }
         };
     
