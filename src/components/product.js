@@ -46,7 +46,7 @@ export default class Product extends React.Component {
                         data-item-name={this.props.data.markdownRemark.frontmatter.name}
                         data-item-id={this.props.data.markdownRemark.frontmatter.sku}
                         data-item-image={this.props.data.markdownRemark.frontmatter.image}
-                        data-item-url={`${NETLIFY_URL}${location.pathname}`}
+                        data-item-url={`${NETLIFY_URL}${this.props.location.pathname}`}
                         data-item-price={this.props.data.markdownRemark.frontmatter.price}>
                         Buy it now for {this.props.data.markdownRemark.frontmatter.price}$
                     </button>
