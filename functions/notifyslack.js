@@ -8,7 +8,7 @@ exports.handler = function(event, context, callback) {
         var data = body.data;
         var message = `${data.name}(${data.email}): ${data.message}`;
 
-        var postData = querystring.stringify({
+        var postData = JSON.stringify({
             text: message
         });
 
@@ -17,8 +17,7 @@ exports.handler = function(event, context, callback) {
             path: '/services/T0253KADL/BAB9445T5/IWjaMiSOjHIdf8tvq2D9oGPe',
             method: 'POST',
             headers: {        
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Content-Length': postData.length
+                'Content-Type': 'application/json'
             }
         };
     
