@@ -8,7 +8,12 @@ exports.handler = function(event, context, callback) {
         var message = `New review from ${data.email} \n ${data.name}: ${data.message}`;
         var attach = [
             {
-                "text": "Do you want to keep the review or not?",
+                "title": "Review ID",
+                "text": data.id
+            },
+            {
+                "title": "Do you want to keep the review?",
+                "text": message,
                 "fallback": "You can't take actions for this review.",
                 "callback_id": "answer_netlify",
                 "color": "#3AA3E3",
@@ -38,7 +43,6 @@ exports.handler = function(event, context, callback) {
         ]
 
         var postData = JSON.stringify({
-            text: message,
             attachments: attach
         });
 
