@@ -74,9 +74,5 @@ exports.handler = function(event, context, callback) {
 
         req.write(postData);
         req.end();
-
-        callback(null, {
-            statusCode: 200
-        })    
     }
 }

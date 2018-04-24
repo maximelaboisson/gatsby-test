@@ -21,8 +21,6 @@ exports.handler = function(event, context, callback) {
 
     var queryToken = `access_token=${token}`;
     var opts1 = Object.assign({}, options, { path: `/api/v1/forms?${queryToken}`});
-    
-    console.log(opts1);
 
     var req = https.request(opts1, function(res) {
 
@@ -30,7 +28,6 @@ exports.handler = function(event, context, callback) {
         var body = "";
 
         res.on('data', data => {
-            console.log(`BODY: ${body}`)
             body += data;
         });
 
@@ -62,10 +59,6 @@ exports.handler = function(event, context, callback) {
 
             req2.end();
         });
-    });
-    
-    req.on('error', function (e) {
-        console.log('Problem with request:', e.message);
     });
 
     req.end();
