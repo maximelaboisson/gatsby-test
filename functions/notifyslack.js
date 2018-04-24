@@ -1,5 +1,4 @@
 var https = require("https");
-var querystring = require('querystring');
 
 exports.handler = function(event, context, callback) {
     var body = JSON.parse(event.body);
@@ -69,6 +68,10 @@ exports.handler = function(event, context, callback) {
         });
 
         req.write(postData);
-        req.end();    
+        req.end();
+
+        callback(null, {
+            statusCode: 200
+        })    
     }
 }
