@@ -24,7 +24,7 @@ exports.handler = function(event, context, callback) {
 
     var postData  = JSON.stringify({
         replace_original: true,
-        text: json.original_message,
+        text: json.original_message.text,
         attachments: [{
             text: answer == 'keep'
                 ? 'The review was approoved!'

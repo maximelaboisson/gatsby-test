@@ -5,7 +5,7 @@ exports.handler = function(event, context, callback) {
 
     if(body != null && body.data != null){
         var data = body.data;
-        var message = `New message from ${data.email} \n ${data.name}: ${data.message}`;
+        var message = `New review from ${data.email} \n ${data.name}: ${data.message}`;
         var attach = [
             {
                 "text": "Do you want to keep the review or not?",
