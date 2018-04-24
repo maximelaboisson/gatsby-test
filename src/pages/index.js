@@ -5,7 +5,7 @@ const IndexPage = () => (
   <div>
     <h1>Hi folks!</h1>
 
-    <p>Welcome to this Gatsby + Grav CMS + Snipcart demo store.</p>
+    <p>Welcome to our Netlify powered store</p>
 
     <Link to="/products">See our products!</Link>
   </div>
