@@ -12,8 +12,7 @@ exports.handler = function(event, context, callback) {
     });
 
     var options = {
-        hostname: event.response_url,
-        port: 443,
+        hostname: json.response_url,
         method: 'POST',
         headers: {        
             'Content-Type': 'application/json'
