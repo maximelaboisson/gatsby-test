@@ -13,8 +13,7 @@ export default class Products extends React.Component {
       }
 
     getProducts(){
-        return netlifyIdentity 
-        && netlifyIdentity.currentUser() != null
+        return netlifyIdentity.currentUser() != null
             ? this.props.data.allMarkdownRemark.edges
             : this.props.data.allMarkdownRemark.edges
                 .filter(x => !x.node.frontmatter.private)  
