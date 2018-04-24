@@ -32,7 +32,7 @@ export default class Product extends React.Component {
             </div>
             <p>{this.props.data.markdownRemark.frontmatter.desc}</p>
     
-            <section>
+            <section className="section__product">
                 <figure className={styles.productFigure}>
                     <img src={this.props.data.markdownRemark.frontmatter.image} />
                 </figure>

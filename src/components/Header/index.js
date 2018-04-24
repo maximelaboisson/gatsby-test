@@ -10,9 +10,11 @@ const Header = () => (
   >
     <div
       style={{
+        display: 'flex',
         margin: '0 auto',
-        maxWidth: 960,
+        maxWidth: '960px',
         padding: '1.45rem 1.0875rem',
+        justifyContent: 'space-between'
       }}
     >
       <h1 style={{ margin: 0 }}>
