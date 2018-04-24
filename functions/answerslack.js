@@ -23,7 +23,7 @@ exports.handler = function(event, context, callback) {
         text: "The review has been approved!"
     });
 
-    var url = this.getURL(json.response_url);
+    var url = getURL(json.response_url);
 
     var options = {
         hostname: url.hostname,
