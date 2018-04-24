@@ -28,7 +28,7 @@ export default class Product extends React.Component {
         <div>
             <h1>{this.props.data.markdownRemark.frontmatter.name}</h1>
             <div className={styles.breadcrumb}>
-                <Link to='/products'>Back to the products</Link>
+                <Link to='/'>Back to the products</Link>
             </div>
             <p>{this.props.data.markdownRemark.frontmatter.desc}</p>
     
