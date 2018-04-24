@@ -13,7 +13,7 @@ exports.handler = function(event, context, callback) {
         });
 
         var options = {
-            hostname: 'www.hooks.slack.com',
+            hostname: 'hooks.slack.com',
             path: '/services/T0253KADL/BAB9445T5/IWjaMiSOjHIdf8tvq2D9oGPe',
             method: 'POST',
             headers: {        
