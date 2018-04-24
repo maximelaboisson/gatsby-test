@@ -22,13 +22,16 @@ exports.handler = function(event, context, callback) {
 
     var answer = json.actions[0].value;
 
+    var endpoint = 'https://api.netlify.com/api/v1/submissions/';
+    var access_token = 'eb34003b40f217432461bc6a272d8b5582ccdf15c14597f12754f3029a55dfbb';
+    var id = '';
+    
     var postData  = JSON.stringify({
         replace_original: true,
-        text: json.original_message.text,
         attachments: [{
             text: answer == 'keep'
-                ? 'The review was approoved!'
-                : 'The review was rejected.'
+                ? `The review (${id}) was approoved!`
+                : `The review was rejected.`
         }]
     });
 
