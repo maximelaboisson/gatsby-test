@@ -350,6 +350,30 @@ h5 {
   padding-left: 60px;
 }
 
+.netlify-identity-menu li {
+  color: white;
+  text-decoration: none;
+}
+
+.netlify-identity-logout {
+  float: right;
+  background-color: white;
+  color: black;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.netlify-identity-logout:hover{
+    border: 2px solid black;
+    box-shadow: 5px 5px white;
+}
+
+.netlify-identity-menu ul {
+  list-style-type: none;
+}
+
 .review__name {
   font-weight: bolder;
 }
