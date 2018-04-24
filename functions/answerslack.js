@@ -4,9 +4,6 @@ var qs = require('querystring')
 exports.handler = function(event, context, callback) {
     var json = JSON.parse(qs.parse(event.body).payload);
 
-    console.log(json);
-    console.log(json.response_url);
-
     var postData  = JSON.stringify({
         replace_original: false,
         text: "The review has been approved!"
@@ -14,8 +11,6 @@ exports.handler = function(event, context, callback) {
 
     var url = new URL(`www.${json.response_url
         .replace(/(^\w+:|^)\/\//, '')}`);
-
-    console.log(url);
 
     var options = {
         hostname: url.hostname,
@@ -25,6 +20,8 @@ exports.handler = function(event, context, callback) {
             'Content-Type': 'application/json'
         }
     };
+
+    console.log(options);
 
     var req = https.request(options, function(res) {
 
