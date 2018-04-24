@@ -6,10 +6,11 @@ exports.handler = function(event, context, callback) {
 
     console.log(json);
 
-    callback(null, {
+    var ans = {
         statusCode: 200,
-        response_type: "ephemeral",
         replace_original: true,
         text: "The review has been approved!"
-    });
+    }
+
+    callback(null, qs.stringify(ans));
 }
