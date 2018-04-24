@@ -1,4 +1,4 @@
-var http = require("http");
+var https = require("https");
 var querystring = require('querystring');
 
 exports.handler = function(event, context, callback) {
@@ -14,7 +14,6 @@ exports.handler = function(event, context, callback) {
 
         var options = {
             hostname: 'www.hooks.slack.com',
-            port: 443,
             path: '/services/T0253KADL/BAB9445T5/IWjaMiSOjHIdf8tvq2D9oGPe',
             method: 'POST',
             headers: {        
@@ -22,7 +21,7 @@ exports.handler = function(event, context, callback) {
             }
         };
     
-        var req = http.request(options, function(res) {
+        var req = https.request(options, function(res) {
             console.log('STATUS:', res.statusCode);
             console.log('HEADERS:', JSON.stringify(res.headers));
             
