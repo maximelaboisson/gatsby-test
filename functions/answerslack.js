@@ -24,7 +24,7 @@ exports.handler = function(event, context, callback) {
 
     var endpoint = 'https://api.netlify.com/api/v1/submissions/';
     var access_token = 'eb34003b40f217432461bc6a272d8b5582ccdf15c14597f12754f3029a55dfbb';
-    var id = '';
+    var id = json.original_message.attachments[0].text;
     
     var postData  = JSON.stringify({
         replace_original: true,
