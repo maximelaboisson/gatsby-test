@@ -6,11 +6,41 @@ exports.handler = function(event, context, callback) {
 
     console.log(json);
 
-    var ans = {
-        statusCode: 200,
-        replace_original: true,
+    var postData  = JSON.stringify({
+        replace_original: false,
         text: "The review has been approved!"
-    }
+    });
 
-    callback(null, qs.stringify(ans));
+    var options = {
+        hostname: event.response_url,
+        port: 443,
+        method: 'POST',
+        headers: {        
+            'Content-Type': 'application/json'
+        }
+    };
+
+    var req = https.request(options, function(res) {
+
+        res.setEncoding('utf8');
+        
+        res.on('end', function () {
+            callback(null, {
+                statusCode: 200
+            })
+        });
+    });
+    
+    req.on('error', function (e) {
+        console.log('Problem with request:', e.message);
+    });
+
+    req.write(postData);
+    req.end();
+
+    callback(null, {
+        statusCode: 200
+    })    
+
+
 }
