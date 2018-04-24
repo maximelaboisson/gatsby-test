@@ -32,7 +32,7 @@ exports.createPages = async ({graphql, boundActionCreators}) => {
         path: node.frontmatter.loc,
         component: slash(productTemplate),
         context: {
-            id: node.sku
+            sku: node.frontmatter.sku
         }
       });
     });
