@@ -57,7 +57,10 @@ export default class Product extends React.Component {
     
             <div className="reviews__list">
                 {this.state.reviews.map((o) =>
-                    <p key={o.number}><div className="review__name">{o.name}</div>: {o.data.message}</p>
+                    <p key={o.number}>
+                        <div className="review__name">{o.name}</div>
+                        <div>{o.data.message}</div>
+                    </p>
                 )}
             </div>
 
