@@ -1,12 +1,10 @@
-import React from 'react'
-import Link from 'gatsby-link'
+import React from 'react';
+import Link from 'gatsby-link';
 const netlifyIdentity = require("netlify-identity-widget");
 
 export default class Header extends React.Component {  
   componentDidMount(){    
-    netlifyIdentity.init({
-      container: "#netlify-modal"
-    });
+    netlifyIdentity.init();
   }
   
   render(){
@@ -37,7 +35,7 @@ export default class Header extends React.Component {
             Gatsby
           </Link>
         </h1>
-        <div id="netlify-modal"></div>
+        <div data-netlify-identity-menu></div>
       </div>
     </div>)
   }

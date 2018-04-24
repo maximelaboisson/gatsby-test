@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import styles from './products.module.css'
+const netlifyIdentity = require("netlify-identity-widget");
 
 export default class Products extends React.Component {
     constructor(data){
@@ -11,14 +12,22 @@ export default class Products extends React.Component {
         }
       }
 
-    componentDidMount(){
-        var products =  window.netlifyIdentity 
-        && window.netlifyIdentity.currentUser() != null
+    getProducts(){
+        return netlifyIdentity 
+        && netlifyIdentity.currentUser() != null
             ? this.props.data.allMarkdownRemark.edges
             : this.props.data.allMarkdownRemark.edges
-                .filter(x => !x.node.frontmatter.private)    
+                .filter(x => !x.node.frontmatter.private)  
+    }
 
-        this.setState({ products: products });
+    updateProducts(){
+        this.setState({ products: this.getProducts() });
+    }
+
+    componentDidMount(){
+        netlifyIdentity.on("login", user => this.updateProducts());
+        netlifyIdentity.on("logout", () => this.updateProducts());
+        this.updateProducts();
     }
 
     render(){
