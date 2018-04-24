@@ -33,8 +33,11 @@ export default class Products extends React.Component {
         return (
         <div>
             <h1>Products</h1>
-            <p>To login use the email: geeks@snipcart.com with password: admin</p>
-    
+            <div>To login use the email: geeks@snipcart.com with password: admin</div>
+            <div>You can read the full blog post <a href="https://snipcart.com/blog/static-forms-serverless-gatsby-netlify">here</a></div>
+            <div>You can check the code repo <a href="https://github.com/snipcart/gatsby-netlify">here</a></div>
+
+
             <ul className={styles.itemsList}>
                 {this.state.products.map((o, index) =>
                     <li key={index} className={styles.item}>
