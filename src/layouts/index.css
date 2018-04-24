@@ -381,7 +381,7 @@ h5 {
 }
 
 .netlify-identity-signup {
-  margin-bottom: 10px;
+  margin-bottom: 10px !important;
   float: right;
   background-color: white;
   color: black;
