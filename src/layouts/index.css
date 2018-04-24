@@ -346,6 +346,14 @@ h5 {
   font-size: 0.85028rem;
   line-height: 1.1;
 }
+.reviews__list {
+  padding-left: 60px;
+}
+
+.review__name {
+  font-weight: bolder;
+}
+
 h6 {
   margin-left: 0;
   margin-right: 0;

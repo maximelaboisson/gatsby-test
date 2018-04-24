@@ -55,9 +55,11 @@ export default class Product extends React.Component {
             <section>
             <h3 className="reviews">Reviews</h3>
     
-            {this.state.reviews.map((o) =>
-                <p key={o.number}>{o.name}: {o.data.message}</p>
-            )}
+            <div className="reviews__list">
+                {this.state.reviews.map((o) =>
+                    <p key={o.number}><div className="review__name">{o.name}</div>: {o.data.message}</p>
+                )}
+            </div>
 
             <form className="review__form" name={formId} method="POST" data-netlify-honeypot="bot-field" data-netlify="true">
                 <input type="hidden" name="form-name" value={formId} />    
