@@ -13,7 +13,8 @@ exports.handler = function(event, context, callback) {
     });
 
     var options = {
-        hostname: json.response_url,
+        hostname: json.response_url
+            .replace(/(^\w+:|^)\/\//, ''),
         method: 'POST',
         headers: {        
             'Content-Type': 'application/json'
