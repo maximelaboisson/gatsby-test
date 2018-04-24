@@ -27,10 +27,10 @@ export default class Product extends React.Component {
         return (
         <div>
             <h1>{this.props.data.markdownRemark.frontmatter.name}</h1>
-            
             <div className={styles.breadcrumb}>
                 <Link to='/products'>Back to the products</Link>
             </div>
+            <p>{this.props.data.markdownRemark.frontmatter.desc}</p>
     
             <section>
                 <figure className={styles.productFigure}>
@@ -46,42 +46,45 @@ export default class Product extends React.Component {
                         data-item-id={this.props.data.markdownRemark.frontmatter.sku}
                         data-item-image={this.props.data.markdownRemark.frontmatter.image}
                         data-item-url={`${NETLIFY_URL}${this.props.location.pathname}`}
-                        data-item-price={this.props.data.markdownRemark.frontmatter.price}>
+                        data-item-price={this.props.data.markdownRemark.frontmatter.price}
+                        data-item-description={this.props.data.markdownRemark.frontmatter.desc}>
                         Buy it now for {this.props.data.markdownRemark.frontmatter.price}$
                     </button>
                 </div>
             </section>
-            
+            <section>
             <h3 className="reviews">Reviews</h3>
     
             {this.state.reviews.map((o) =>
                 <p key={o.number}>{o.name}: {o.data.message}</p>
             )}
 
-            <form name={formId} method="POST" data-netlify-honeypot="bot-field" data-netlify="true">
-                <input type="hidden" name="form-name" value={formId} />
-                <p>
-                    <label>Name: <input type="text" name="name"></input></label>
-                </p>            
-                <p>
-                    <label>Email: <input type="email" name="email"></input></label>
-                </p>
-    
-                <p>
-                    <label>Review message: <textarea name="message"></textarea></label>
-                </p>
-                <p>
-                    <button type="submit">Send</button>
-                </p>
+            <form className="review__form" name={formId} method="POST" data-netlify-honeypot="bot-field" data-netlify="true">
+                <input type="hidden" name="form-name" value={formId} />    
+                <div className="field__form">
+                    <label>NAME</label>
+                    <input type="text" name="name"></input>
+                </div>
+                <div className="field__form">
+                    <label>EMAIL</label>
+                    <input type="email" name="email"></input>
+                </div>
+                <div className="field__form">
+                    <label>MESSAGE</label>
+                    <textarea name="message"></textarea>
+                </div>
+
+                <button className="button__form" type="submit">SEND</button>
             </form>
+            </section>
         </div>)
     }
     
 }
 
 export const query = graphql`
-query productById($id: Int) {
-    markdownRemark(frontmatter: { sku: { eq: $id } }) {
+query productById($sku: String) {
+    markdownRemark(frontmatter: { sku: { eq: $sku } }) {
       html
       frontmatter {
         sku,
@@ -89,7 +92,8 @@ query productById($id: Int) {
         price,
         desc,
         private,
-        name
+        name,
+        image
       }
     }
   }

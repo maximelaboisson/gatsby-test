@@ -41,6 +41,49 @@ a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }
+
+.review__form {
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+.field__form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: bolder;
+}
+
+.submit__form {
+  color: blue;
+}
+
+.button__form {
+  width: 100px;
+  height: 40px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #639;
+  color: white;
+  border-radius: 8px;
+}
+
+.button__form:hover {
+  border: 2px solid black;
+  box-shadow: 5px 5px #888888;
+}
+
+.snipcart-add-item:hover{
+    border: 2px solid black;
+    box-shadow: 5px 5px #888888;
+}
+
+.reviews{
+  border-bottom: gray 1px solid;
+}
+
 a:active,
 a:hover {
   outline-width: 0;

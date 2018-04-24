@@ -31,8 +31,8 @@ export default class Products extends React.Component {
                     <li key={index} className={styles.item}>
                         <Link to={o.node.frontmatter.loc}>
                             <figure>
-                                <img className={styles.image} src={o.node.image} alt={o.node.name}></img>
-                                <figcaption className={styles.figCaption}>Buy the {o.node.name} now</figcaption>
+                                <img className={styles.image} src={o.node.frontmatter.image} alt={o.node.frontmatter.name}></img>
+                                <figcaption className={styles.figCaption}>Buy the {o.node.frontmatter.name} now</figcaption>
                             </figure>
                         </Link>
                     </li>
@@ -53,7 +53,8 @@ query allProducts {
                     price,
                     desc,
                     private,
-                    name
+                    name,
+                    image
                 }
             }
         }
