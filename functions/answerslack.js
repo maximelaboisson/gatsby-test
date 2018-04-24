@@ -18,20 +18,44 @@ function getURL(href) {
 exports.handler = function(event, context, callback) {
     var json = JSON.parse(qs.parse(event.body).payload);
 
-    console.log(json);
-
     var answer = json.actions[0].value;
 
-    var endpoint = 'https://api.netlify.com/api/v1/submissions/';
     var access_token = 'eb34003b40f217432461bc6a272d8b5582ccdf15c14597f12754f3029a55dfbb';
     var id = json.original_message.attachments[0].text;
     
+    if(answer == 'reject'){
+        var options = {
+            hostname: 'api.netlify.com',
+            port: 443,
+            path: `/api/v1/submissions/${id}?access_token=${access_token}`,
+            method: 'DELETE',
+            headers: {        
+                'Content-Type': 'application/json'
+            }
+        };
+    
+        var req1 = https.request(options, function(res) {
+
+            res.setEncoding('utf8');
+            
+            res.on('end', function () {
+                console.log(`Review with id: ${id} was deleted successfully.`)
+            });
+        });
+        
+        req1.on('error', function (e) {
+            console.log('Problem with request:', e.message);
+        });
+
+        req1.end(); 
+    }
+
     var postData  = JSON.stringify({
         replace_original: true,
         attachments: [{
             text: answer == 'keep'
                 ? `The review (${id}) was approoved!`
-                : `The review was rejected.`
+                : `The review (${id}) was rejected.`
         }]
     });
 
