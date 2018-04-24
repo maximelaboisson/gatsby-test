@@ -3,7 +3,6 @@
     display: block;
     padding: 2em;
     width: 33%;
-    height: 33%;
     text-align: center;
 }
 
@@ -19,4 +18,6 @@
     border: solid 1px rebeccapurple;
     border-radius: 50%;
     padding: 1em;
+    height: 200px;
+    width: 200px;
 }
