@@ -12,9 +12,14 @@ exports.handler = function(event, context, callback) {
         text: "The review has been approved!"
     });
 
+    var url = new URL(`www.${json.response_url
+        .replace(/(^\w+:|^)\/\//, '')}`);
+
+    console.log(url);
+
     var options = {
-        hostname: json.response_url
-            .replace(/(^\w+:|^)\/\//, ''),
+        hostname: url.hostname,
+        path: url.pathname,
         method: 'POST',
         headers: {        
             'Content-Type': 'application/json'
