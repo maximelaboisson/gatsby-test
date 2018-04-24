@@ -370,6 +370,36 @@ h5 {
     box-shadow: 5px 5px white;
 }
 
+.netlify-identity-login:hover{
+  border: 2px solid black;
+  box-shadow: 5px 5px white;
+}
+
+.netlify-identity-signup:hover{
+  border: 2px solid black;
+  box-shadow: 5px 5px white;
+}
+
+.netlify-identity-signup {
+  float: right;
+  background-color: white;
+  color: black;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.netlify-identity-login {
+  float: right;
+  background-color: white;
+  color: black;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 .netlify-identity-menu {
   list-style-type: none;
 }
