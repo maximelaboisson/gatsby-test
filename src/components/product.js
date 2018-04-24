@@ -14,7 +14,7 @@ export default class Product extends React.Component {
     }
 
     componentDidMount(){
-        fetch(`http://localhost:9000/fetchreviews?id=${this.props.data.markdownRemark.frontmatter.sku}`)
+        fetch(`http://${NETLIFY_URL}/fetchreviews?id=${this.props.data.markdownRemark.frontmatter.sku}`)
             .then(x => x.json())
             .then(x => {
                 console.log(x);
