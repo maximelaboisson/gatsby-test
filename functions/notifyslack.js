@@ -6,14 +6,46 @@ exports.handler = function(event, context, callback) {
 
     if(body != null && body.data != null){
         var data = body.data;
-        var message = `${data.name}(${data.email}): ${data.message}`;
+        var message = `New message from ${data.email} \n ${data.name}: ${data.message}`;
+        var attach = [
+            {
+                "text": "Do you want to keep the review or not?",
+                "fallback": "You can't take actions for this review.",
+                "callback_id": "answer_netlify",
+                "color": "#3AA3E3",
+                "attachment_type": "default",
+                "actions": [
+                    {
+                        "name": "response",
+                        "text": "Keep",
+                        "type": "button",
+                        "value": "keep"
+                    },
+                    {
+                        "name": "response",
+                        "text": "Reject",
+                        "type": "button",
+                        "style": "danger",
+                        "value": "reject",
+                        "confirm": {
+                            "title": "Are you sure?",
+                            "text": "Once it's done the review will be deleted",
+                            "ok_text": "Yes",
+                            "dismiss_text": "No"
+                        }
+                    }
+                ]
+            }
+        ]
 
         var postData = JSON.stringify({
-            text: message
+            text: message,
+            attachments: attach
         });
 
         var options = {
             hostname: 'hooks.slack.com',
+            port: 443,
             path: '/services/T0253KADL/BAB9445T5/IWjaMiSOjHIdf8tvq2D9oGPe',
             method: 'POST',
             headers: {        
@@ -22,14 +54,8 @@ exports.handler = function(event, context, callback) {
         };
     
         var req = https.request(options, function(res) {
-            console.log('STATUS:', res.statusCode);
-            console.log('HEADERS:', JSON.stringify(res.headers));
-            
+
             res.setEncoding('utf8');
-            
-            res.on('data', function (body) {
-                console.log('Body: ' + body);
-            });
             
             res.on('end', function () {
                 callback(null, {
