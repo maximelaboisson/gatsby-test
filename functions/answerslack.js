@@ -18,6 +18,8 @@ function getURL(href) {
 exports.handler = function(event, context, callback) {
     var json = JSON.parse(qs.parse(event.body).payload);
 
+    console.log(json);
+
     var postData  = JSON.stringify({
         replace_original: false,
         text: "The review has been approved!"
@@ -33,8 +35,6 @@ exports.handler = function(event, context, callback) {
             'Content-Type': 'application/json'
         }
     };
-
-    console.log(options);
 
     var req = https.request(options, function(res) {
 
@@ -57,6 +57,4 @@ exports.handler = function(event, context, callback) {
     callback(null, {
         statusCode: 200
     })    
-
-
 }
