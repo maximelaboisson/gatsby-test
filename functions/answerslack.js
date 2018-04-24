@@ -20,9 +20,16 @@ exports.handler = function(event, context, callback) {
 
     console.log(json);
 
+    var answer = json.actions[0].value;
+
     var postData  = JSON.stringify({
-        replace_original: false,
-        text: "The review has been approved!"
+        replace_original: true,
+        text: json.original_message,
+        attachments: [{
+            text: answer == 'keep'
+                ? 'The review was approoved!'
+                : 'The review was rejected.'
+        }]
     });
 
     var url = getURL(json.response_url);
