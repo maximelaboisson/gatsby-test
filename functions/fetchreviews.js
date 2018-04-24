@@ -11,9 +11,8 @@ exports.handler = function(event, context, callback) {
     }
 
     var options = {
-        hostname: 'api.netlify.com/api/v1/',
+        hostname: 'api.netlify.com',
         port: 443,
-        path: '',
         method: 'GET',
         headers: {        
             'Content-Type': 'application/json'
@@ -21,28 +20,26 @@ exports.handler = function(event, context, callback) {
     };
 
     var queryToken = `access_token=${token}`;
-    var opts1 = Object.assign({}, { path: `/forms?${queryToken}`}, options);
+    var opts1 = Object.assign({}, options, { path: `/api/v1/forms?${queryToken}`});
     
+    console.log(opts1);
+
     var req = https.request(opts1, function(res) {
 
         res.setEncoding('utf8');
         var body = "";
 
-        res.on("data", (data) => {
+        res.on('data', data => {
+            console.log(`BODY: ${body}`)
             body += data;
         });
 
         res.on('end', function () {
             body = JSON.parse(body);
-
             var form = body.filter(x => x.name == `product-${id}`)[0];
-            var opts2 = Object.assign({}, { path: `/forms/${form.id}/submissions?${queryToken}`}, options);
-            if(form == null){
-                callback('The product id must be valid.')
-            }
+            var opts2 = Object.assign({}, options, { path: `/api/v1/forms/${form.id}/submissions?${queryToken}`});
 
             var req2 = https.request(opts2, function(res2) {
-            
                 res2.setEncoding('utf8');         
                 var body2 = "";
 
@@ -50,16 +47,20 @@ exports.handler = function(event, context, callback) {
                     body2 += data;
                 });
 
-                res.on('end', function () {
+                res2.on('end', function () {
+                    
                     callback(null, {
                         statusCode: 200,
                         headers: {
-                            "Access-Control-Allow-Origin" : "*"
+                            "Access-Control-Allow-Origin" : "*",
+                            'Content-Type': 'application/json'
                         },
                         body: body2
                     })
                 });
             });
+
+            req2.end();
         });
     });
     
@@ -67,10 +68,5 @@ exports.handler = function(event, context, callback) {
         console.log('Problem with request:', e.message);
     });
 
-    req.write(postData);
     req.end();
-
-    callback(null, {
-        statusCode: 200
-    })  
 }
