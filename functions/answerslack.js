@@ -54,7 +54,7 @@ exports.handler = function(event, context, callback) {
         replace_original: true,
         attachments: [{
             text: answer == 'keep'
-                ? `The review (${id}) was approoved!`
+                ? `The review (${id}) was approved!`
                 : `The review (${id}) was rejected.`
         }]
     });
