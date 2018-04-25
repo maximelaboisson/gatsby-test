@@ -2,7 +2,7 @@ const https = require('https');
 
 exports.handler = function(event, context, callback) {
     var id = event.queryStringParameters.id;
-    var token = 'eb34003b40f217432461bc6a272d8b5582ccdf15c14597f12754f3029a55dfbb';
+    var token = 'a69cedf9ea585b3d8ad1b27577e402b763f733f774cb75b0a16748e2fc30fc0c';
 
     if(id == undefined){
         callback('A product id must be specified.', {
