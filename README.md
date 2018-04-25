@@ -1,9 +1,9 @@
-# Snipcart + Grav + Gatsby
+# Static Forms, Auth & Serverless Functions (Gatsby + Netlify Demo)
 
-![Gastby](https://snipcart.com/media/175949/screen-shot-2018-02-19-at-31244-pm.png)
+![gatsby+netlify+aws-lambda](https://snipcart.com/media/203604/gatsby-netlify-aws-lambda.jpg)
 
-This repo contains the code for a demo Gatsby website, it uses Snipcart for e-commerce and gets the product information from a Grav headless setup.
+Supercharge your static site with forms, password-protected authentication, and AWS Lambda functions. This repo explores powerful Netlify features on top of a Gatsby site.
 
-> [See live demo](https://snipcart-gatsby-grav.netlify.com/)
+> [See live demo](https://gatsby-netlify-snipcart.netlify.com/)
 
-> [Read full tutorial](https://snipcart.com/blog/react-graphql-grav-cms-headless-tutorial)
+> [Read full tutorial](https://snipcart.com/blog/static-forms-serverless-gatsby-netlify)
