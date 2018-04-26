@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import styles from './product.module.css'
-const NETLIFY_FUNC = 'gatsby-netlify-snipcart.netlify.com/.netlify/functions'
+const NETLIFY_FUNC = 'serene-nobel-94bbcc.netlify.com/.netlify/functions'
 const NETLIFY_URL = 'https://gatsby-netlify-snipcart.netlify.com'
 
 export default class Product extends React.Component {

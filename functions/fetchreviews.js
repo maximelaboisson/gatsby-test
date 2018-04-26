@@ -21,7 +21,7 @@ exports.handler = function(event, context, callback) {
             'Content-Type': 'application/json'
         }
     };
-
+    
     var queryToken = `access_token=${token}`;
     var opts1 = Object.assign({}, options, { path: `/api/v1/forms?${queryToken}`});
 
