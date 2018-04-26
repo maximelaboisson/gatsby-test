@@ -5,8 +5,9 @@ exports.handler = function(event, context, callback) {
 
     var a = "$netlify_access_token";
 
-    console.log(`TOKEN IS: ${netlify_access_token}`);
     console.log(`Token2 is ${a}`);
+    console.log(`TOKENNNNN is ${process.env.$netlify_access_token}`)
+    console.log(`TOKENNNNNzzzzz is ${process.env.netlify_access_token}`)
     console.log(`TOKEN3 is: ${$netlify_access_token}`)
 
     if(id == undefined){
