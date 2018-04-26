@@ -1,6 +1,9 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import styles from './product.module.css'
+import fourOfour from './../pages/404.js'
+const netlifyIdentity = require("netlify-identity-widget");
+
 const NETLIFY_FUNC = 'serene-nobel-94bbcc.netlify.com/.netlify/functions'
 const NETLIFY_URL = 'https://gatsby-netlify-snipcart.netlify.com'
 
@@ -10,7 +13,8 @@ export default class Product extends React.Component {
         super(props);
 
         this.state = {
-            reviews: []
+            reviews: [],
+            loggedIn: false
         }
     }
 
@@ -20,9 +24,21 @@ export default class Product extends React.Component {
             .then(x => {
                 this.setState({reviews: x})
             })
+
+        if(netlifyIdentity.currentUser() != null){
+            this.setState({loggedIn: true});
+        }
+
+        netlifyIdentity.on("login", user => this.setState({loggedIn: true}));
+        netlifyIdentity.on("logout", () => this.setState({loggedIn: false}));
     }
 
     render(){
+        if(this.props.data.markdownRemark.frontmatter.private
+            && !this.state.loggedIn){
+            return fourOfour();
+        }
+
         var formId = `product-${this.props.data.markdownRemark.frontmatter.sku}`
 
         return (
