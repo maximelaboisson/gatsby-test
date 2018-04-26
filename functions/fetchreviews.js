@@ -3,7 +3,7 @@ const https = require('https');
 exports.handler = function(event, context, callback) {
     var id = event.queryStringParameters.id;
     
-    var token = process.env.NETLIFY_ACCESS_TOKEN;
+    var token = JSON.stringify(process.env.NETLIFY_ACCESS_TOKEN);
 
     console.log(`TOKEN IS: ${token}`);
 
