@@ -50,7 +50,7 @@ exports.handler = function(event, context, callback) {
         var options = {
             hostname: 'hooks.slack.com',
             port: 443,
-            path: '/services/T0253KADL/BAB9445T5/IWjaMiSOjHIdf8tvq2D9oGPe',
+            path: process.env.slack_webhook_url,
             method: 'POST',
             headers: {        
                 'Content-Type': 'application/json'
