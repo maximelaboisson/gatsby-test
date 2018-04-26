@@ -47,10 +47,14 @@ exports.handler = function(event, context, callback) {
             attachments: attach
         });
 
+        var webhook = process.env.slack_webhook_url; 
+
+        console.log('WEBHOOK URL IS: ' + webhook);
+
         var options = {
             hostname: 'hooks.slack.com',
             port: 443,
-            path: process.env.slack_webhook_url,
+            path: webhgook,
             method: 'POST',
             headers: {        
                 'Content-Type': 'application/json'
