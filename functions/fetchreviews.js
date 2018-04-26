@@ -7,7 +7,7 @@ exports.handler = function(event, context, callback) {
 
     console.log(`TOKEN IS: ${netlify_access_token}`);
     console.log(`Token2 is ${a}`);
-    console.log(`TOKEN3 is: ${$netlify_access_token})
+    console.log(`TOKEN3 is: ${$netlify_access_token}`)
 
     if(id == undefined){
         callback('A product id must be specified.', {
