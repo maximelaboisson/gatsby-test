@@ -4,6 +4,8 @@ exports.handler = function(event, context, callback) {
     var id = event.queryStringParameters.id;
     var token = process.env.netlify_access_token;
 
+    console.log(token);
+
     if(id == undefined){
         callback('A product id must be specified.', {
             statusCode: 500
