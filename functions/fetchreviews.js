@@ -2,9 +2,10 @@ const https = require('https');
 
 exports.handler = function(event, context, callback) {
     var id = event.queryStringParameters.id;
-    var token = process.env.netlify_access_token;
+    
+    var token = process.env.NETLIFY_ACCESS_TOKEN;
 
-    console.log(token);
+    console.log(`TOKEN IS: ${token}`);
 
     if(id == undefined){
         callback('A product id must be specified.', {
