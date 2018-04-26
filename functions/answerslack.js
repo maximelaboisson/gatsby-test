@@ -19,8 +19,7 @@ exports.handler = function(event, context, callback) {
     var json = JSON.parse(qs.parse(event.body).payload);
 
     var answer = json.actions[0].value;
-
-    var access_token = 'a69cedf9ea585b3d8ad1b27577e402b763f733f774cb75b0a16748e2fc30fc0c';
+    var access_token = process.env.netlify_access_token;
     var id = json.original_message.attachments[0].text;
     
     if(answer == 'reject'){
